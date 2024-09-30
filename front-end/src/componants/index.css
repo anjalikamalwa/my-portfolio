@@ -400,7 +400,8 @@ span {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin: auto;
+    margin: 25px auto;
+    padding: 3rem;
 }
 
 .main-heading {
@@ -533,7 +534,7 @@ span {
     width: 75%;
 }
 
-.error{
+.error {
     color: rgb(209, 20, 80);
     font-weight: 500;
     font-size: 16px;
@@ -548,10 +549,11 @@ span {
         justify-content: center;
     }
 
-    .first-part{
+    .first-part {
         width: 100%;
     }
-    .second-part{
+
+    .second-part {
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -580,7 +582,7 @@ input {
     margin: 10px;
 }
 
-textarea{
+textarea {
     background-color: transparent;
     border: 2px solid #fff;
     border-radius: 10px;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { MdMenu, MdClose } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,10 +19,16 @@ const Home = () => {
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
     setForm({
       ...form,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
+
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: "",
+    }));
   };
 
   const validateForm = () => {
@@ -90,9 +96,10 @@ const Home = () => {
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
   };
+
   return (
     <>
-    <ToastContainer/>
+      <ToastContainer />
       <div className="header">
         <nav className="navbar">
           <div className="logo-d">
@@ -291,9 +298,10 @@ const Home = () => {
           </div>
         </div>
       </section>
+     
       <section className="contact-section" id="contact">
         <h3 className="main-heading">Contact Me</h3>
-        <form className="contactForm" id="contact-form" onSubmit={handleSubmit}>
+        <form className="contactForm" id="contact-form" onSubmit={handleSubmit} autoComplete="off">
           <div className="first-part">
             <input
               placeholder="Your Name"
@@ -302,9 +310,7 @@ const Home = () => {
               value={form.name}
               onChange={handleChange}
             />
-            {errors.name && (
-              <div className="error">{errors.name}</div>
-            )}
+            {errors.name && <div className="error">{errors.name}</div>}
 
             <input
               placeholder="Your Email"
@@ -314,9 +320,7 @@ const Home = () => {
               value={form.email}
               onChange={handleChange}
             />
-            {errors.email && (
-              <div className="error">{errors.email}</div>
-            )}
+            {errors.email && <div className="error">{errors.email}</div>}
 
             <input
               placeholder="Your Phone"
@@ -326,9 +330,7 @@ const Home = () => {
               value={form.phone}
               onChange={handleChange}
             />
-            {errors.phone && (
-              <div className="error">{errors.phone}</div>
-            )}
+            {errors.phone && <div className="error">{errors.phone}</div>}
 
             <input
               placeholder="Subject"
@@ -337,9 +339,7 @@ const Home = () => {
               value={form.subject}
               onChange={handleChange}
             />
-            {errors.subject && (
-              <div className="error">{errors.subject}</div>
-            )}
+            {errors.subject && <div className="error">{errors.subject}</div>}
           </div>
 
           <div className="second-part">
