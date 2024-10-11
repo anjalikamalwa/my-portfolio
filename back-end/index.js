@@ -7,16 +7,19 @@ import { errorHandler } from "./middleware/errorHandler.js";
 
 
 dotenv.config();
+connectDB();
 
 const app = express();
-connectDB();
+const port = process.env.PORT || 4000;
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use("/api/message", router);
-app.use(errorHandler);
 
-const port = process.env.PORT || 4000;
+
+
+app.use(errorHandler);
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
